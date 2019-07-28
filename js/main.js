@@ -12,10 +12,10 @@ window.onload = function(e) {
     indicators: true
   });
 
-  var carousel = M.Carousel.getInstance(document.querySelectorAll('.carousel')[0]);
-  setInterval(function() {
-    carousel.next();
-  }, 5000);
+  // var carousel = M.Carousel.getInstance(document.querySelectorAll('.carousel')[0]);
+  // setInterval(function() {
+  //   carousel.next();
+  // }, 10000);
 
   window.addEventListener("resize", siteFooter);
 
