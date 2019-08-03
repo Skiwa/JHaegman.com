@@ -282,7 +282,11 @@ body::-webkit-scrollbar-thumb
     }
   }
   .carousel{
-    height: 400px !important;
+    // height: 400px !important;
+  }
+
+  .portfolio-button{
+    padding: 0 0.5rem;
   }
 }
 

@@ -12,11 +12,6 @@ window.onload = function(e) {
     indicators: true
   });
 
-  // var carousel = M.Carousel.getInstance(document.querySelectorAll('.carousel')[0]);
-  // setInterval(function() {
-  //   carousel.next();
-  // }, 10000);
-
   window.addEventListener("resize", siteFooter);
 
   siteFooter();
@@ -26,6 +21,7 @@ window.onload = function(e) {
     console.log(siteFooterHeight);
     document.getElementById('site-content').style.marginBottom = siteFooterHeight;
   }
+
 
 
   //Footer goes up when scrolled in
@@ -47,6 +43,27 @@ window.onload = function(e) {
 }
 
   document.addEventListener('DOMContentLoaded', function() {
+
+    window.addEventListener("resize", function(){    setTimeout(function(){ siteCarousel(); }, 2000);});
+
+    setTimeout(function(){ siteCarousel(); }, 2000);
+
+    function siteCarousel(){
+      console.log('siteCarousel()');
+      var items = document.querySelectorAll('.carousel-item>.container');
+      console.log(items);
+      var maxHeight = 0;
+
+      for(var i = 0; i < items.length ; i++){
+        var height = parseInt(window.getComputedStyle(items[i]).height);
+        if(height > maxHeight){
+          maxHeight = height;
+        }
+      }
+      document.getElementsByClassName('carousel')[0].style.height = (maxHeight+67)+'px';
+    }
+
+
     var elems = document.querySelectorAll('.tooltipped');
     var instances = M.Tooltip.init(elems);
 
