@@ -1,5 +1,5 @@
 window.onload = function(e) {
- // M.toast({html: '<span class="toast--content shamrock-text">Disponible </span><span class="toast--content"> pour vos missions remote ! 🤞 </span>', classes: ['rounded', 'toast'], displayLength: Infinity});
+ M.toast({html: '<span class="toast--content"><i class=\"material-icons left red-text\">block</i>Indisponible jusqu\'au 20 août </span><i class=\"material-icons right grey-text\" onclick=\'M.Toast.getInstance(this.parentElement).dismiss();\'>clear</i>', classes: ['rounded', 'toast'], displayLength: Infinity});
 
 
   ScrollReveal().reveal('.js-article-left', {reset: true, delay: 150, origin: 'left', distance: '50px'});
@@ -12,13 +12,15 @@ window.onload = function(e) {
     indicators: true
   });
 
+  //Modal init
+  M.Modal.init(document.querySelectorAll('.modal'));
+
   window.addEventListener("resize", siteFooter);
 
   siteFooter();
 
   function siteFooter() {
     var siteFooterHeight = window.getComputedStyle(document.getElementById('site-footer')).height;
-    console.log(siteFooterHeight);
     document.getElementById('site-content').style.marginBottom = siteFooterHeight;
   }
 
@@ -27,8 +29,8 @@ window.onload = function(e) {
   //Footer goes up when scrolled in
   var atBottom = false;
   window.onscroll = function(ev) {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      atBottom =true;
+    if ((window.innerHeight + window.scrollY +1) >= document.body.offsetHeight) {
+      atBottom = true;
       document.getElementById('site-footer').style.zIndex = 10;
       document.getElementById('return-to-top').style.zIndex =100;
     }else{
@@ -40,18 +42,31 @@ window.onload = function(e) {
   };
 
 
+
+  //Captcha validation
+  document.getElementById("contactForm").addEventListener("submit",function(evt){
+    var response = grecaptcha.getResponse();
+    if(response.length == 0)
+    {
+      //reCaptcha not verified
+      M.toast({html: '<span>❌  Captcha non vérifié ! </span>'});
+      evt.preventDefault();
+      return false;
+    }
+
+    M.toast({html: '<span>✔️  Formulaire envoyé !</span>'});
+  });
+
 }
 
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener("resize", function(){    setTimeout(function(){ siteCarousel(); }, 2000);});
 
     setTimeout(function(){ siteCarousel(); }, 2000);
 
     function siteCarousel(){
-      console.log('siteCarousel()');
       var items = document.querySelectorAll('.carousel-item>.container');
-      console.log(items);
       var maxHeight = 0;
 
       for(var i = 0; i < items.length ; i++){

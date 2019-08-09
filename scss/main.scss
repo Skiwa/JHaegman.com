@@ -62,7 +62,7 @@ main{
 
 
 }
-h1,h3,big,input,label,li,p,span,strong,textarea{
+h1,h3,h4,big,input,label,li,p,span,strong,textarea{
   font-family: itc-avant-garde-gothic-pro, sans-serif;
 }
 
@@ -77,7 +77,7 @@ h2{
   font-weight: 700;
   text-transform: uppercase;
 }
-h3{
+h3, h4{
   font-weight: 700;
 }
 big,input,label,li,p,span,textarea{
@@ -145,17 +145,19 @@ a.btn{
 }
 
 .toast{
-  background-color: $big-stone;
+  // background-color: white;
   border-radius: 35px;
-  font-family: raleway;
-  color: white;
-  position: absolute;
-  right: 0;
+  // font-family: raleway;
+  font-family: itc-avant-garde-gothic-pro, sans-serif;
+
+  // color: $big-stone;
+  // position: absolute;
+  // right: 0;
   opacity: 0;
-  .toast--content{
-    font-family: raleway !important;
-    font-weight: 300;
-  }
+  // .toast--content{
+    // font-family: raleway !important;
+    // font-weight: 300;
+  // }
 }
 
 
@@ -425,6 +427,10 @@ body::-webkit-scrollbar-thumb
       }
     }
   }
+  .about{
+    opacity: .5;
+    text-decoration: underline;
+  }
   .signature{
     text-transform: uppercase;
     opacity: .25;
@@ -433,6 +439,43 @@ body::-webkit-scrollbar-thumb
     opacity: .1
   }
 }
+
+
+
+/*------------------------------------*\
+    $MODALS
+\*------------------------------------*/
+#aboutModal{
+  border-radius: 10px;
+  overflow-y: hidden;
+  h3{
+    padding: 1em;
+    margin-bottom: 0;
+  }
+  h4{
+    margin-top: 1.33em;
+    margin-bottom: .5em;
+  }
+  .modal-content{
+    // padding-top: 0;
+  }
+  .aboutModal--content{
+    .aboutModal--content__about{
+
+    }
+    .aboutModal--content__tools{
+      li{
+        line-height: 1.5rem;
+      }
+    }
+  }
+}
+
+
+
+
+
+
 
 
 #return-to-top {

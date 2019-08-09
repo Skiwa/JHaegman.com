@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"></head><body>
+
+<?php
+  $nom = isset($_POST['nom']) ? utf8_encode($_POST['nom']) : '_nom';
+  $coordonnees = isset($_POST['mail']) ? utf8_encode($_POST['mail']) : '_mail';
+  $message = isset($_POST['message']) ? utf8_encode($_POST['message']) : '_message';
+
+  $to    = "contact@jhaegman.com";
+  $from  = "contact@jhaegman.com";
+
+  $JOUR  = date("d-m-Y");
+  $HEURE = date("H:i");
+  $Subject = "Nouveau message de ".$nom;
+
+  // $mail_Data = "";
+  // $mail_Data .= "<html> \n";
+  // $mail_Data .= "<head> \n";
+  // $mail_Data .= "<meta charset='utf-8'> \n";
+  // $mail_Data .= "<title> Subject </title> \n";
+  // $mail_Data .= "</head> \n";
+  // $mail_Data .= "<body> \n";
+  // $mail_Data .= "<style>*{font-size: 1.4em}</style><span>De : </span><b> $nom </b> <br> \n";
+  // $mail_Data .= "<span>Coordonnees : </span><b>".$coordonnees." </b> <br> <br> \n";
+  // $mail_Data .= "<span>Message : </span><b>".$message." </b> <br> \n";
+  //
+  // $mail_Data .= "</body> \n";
+  // $mail_Data .= "</HTML> \n";
+
+  $headers  = "MIME-Version: 1.0 \n";
+  $headers .= "Content-type: text/html; charset=utf-8 \n";
+  $headers .= "From: $from  \n";
+  $headers .= "Disposition-Notification-To: $from  \n";
+
+
+  $mail_Data =  '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
+  $mail_Data .=  '';
+  $mail_Data .=  '<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">';
+  $mail_Data .=  '<head>';
+  $mail_Data .=  '<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>';
+  $mail_Data .=  '<meta content="width=device-width" name="viewport"/>';
+  $mail_Data .=  '<meta content="IE=edge" http-equiv="X-UA-Compatible"/>';
+  $mail_Data .=  '<title></title>';
+  $mail_Data .=  '<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"/>';
+  $mail_Data .=  '<style type="text/css">';
+  $mail_Data .=  'body {';
+  $mail_Data .=  'margin: 0;';
+  $mail_Data .=  'padding: 0;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  'table,';
+  $mail_Data .=  'td,';
+  $mail_Data .=  'tr {';
+  $mail_Data .=  'vertical-align: top;';
+  $mail_Data .=  'border-collapse: collapse;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  '* {';
+  $mail_Data .=  'line-height: inherit;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  'a[x-apple-data-detectors=true] {';
+  $mail_Data .=  'color: inherit !important;';
+  $mail_Data .=  'text-decoration: none !important;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '</style>';
+  $mail_Data .=  '<style id="media-query" type="text/css">';
+  $mail_Data .=  '@media (max-width: 520px) {';
+  $mail_Data .=  '';
+  $mail_Data .=  '.block-grid,';
+  $mail_Data .=  '.col {';
+  $mail_Data .=  'min-width: 320px !important;';
+  $mail_Data .=  'max-width: 100% !important;';
+  $mail_Data .=  'display: block !important;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  '.block-grid {';
+  $mail_Data .=  'width: 100% !important;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  '.col {';
+  $mail_Data .=  'width: 100% !important;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  '.col>div {';
+  $mail_Data .=  'margin: 0 auto;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  'img.fullwidth,';
+  $mail_Data .=  'img.fullwidthOnMobile {';
+  $mail_Data .=  'max-width: 100% !important;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  '.no-stack .col {';
+  $mail_Data .=  'min-width: 0 !important;';
+  $mail_Data .=  'display: table-cell !important;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  '.no-stack.two-up .col {';
+  $mail_Data .=  'width: 50% !important;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  '.no-stack .col.num4 {';
+  $mail_Data .=  'width: 33% !important;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  '.no-stack .col.num8 {';
+  $mail_Data .=  'width: 66% !important;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  '.no-stack .col.num4 {';
+  $mail_Data .=  'width: 33% !important;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  '.no-stack .col.num3 {';
+  $mail_Data .=  'width: 25% !important;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  '.no-stack .col.num6 {';
+  $mail_Data .=  'width: 50% !important;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  '.no-stack .col.num9 {';
+  $mail_Data .=  'width: 75% !important;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  '.video-block {';
+  $mail_Data .=  'max-width: none !important;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  '.mobile_hide {';
+  $mail_Data .=  'min-height: 0px;';
+  $mail_Data .=  'max-height: 0px;';
+  $mail_Data .=  'max-width: 0px;';
+  $mail_Data .=  'display: none;';
+  $mail_Data .=  'overflow: hidden;';
+  $mail_Data .=  'font-size: 0px;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '';
+  $mail_Data .=  '.desktop_hide {';
+  $mail_Data .=  'display: block !important;';
+  $mail_Data .=  'max-height: none !important;';
+  $mail_Data .=  '}';
+  $mail_Data .=  '}';
+  $mail_Data .=  '</style>';
+  $mail_Data .=  '</head>';
+  $mail_Data .=  '<body class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: #FFFFFF;">';
+  $mail_Data .=  '<!--[if IE]><div class="ie-browser"><![endif]-->';
+  $mail_Data .=  '<table bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="table-layout: fixed; vertical-align: top; min-width: 320px; Margin: 0 auto; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #FFFFFF; width: 100%;" valign="top" width="100%">';
+  $mail_Data .=  '<tbody>';
+  $mail_Data .=  '<tr style="vertical-align: top;" valign="top">';
+  $mail_Data .=  '<td style="word-break: break-word; vertical-align: top;" valign="top">';
+  $mail_Data .=  '<div style="background-image:url(\'http://www.jhaegman.com/img/mail/string_theory.jpg\');background-position:top center;background-repeat:repeat;background-color: #151B3F">';
+  $mail_Data .=  '<div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: #FFFFFF;">';
+  $mail_Data .=  '<div style="border-collapse: collapse;display: table;width: 100%;background-color:#FFFFFF;">';
+  $mail_Data .=  '<div class="col num12" style="min-width: 320px; max-width: 500px; display: table-cell; vertical-align: top; width: 500px;">';
+  $mail_Data .=  '<div style="width:100% !important;">';
+  $mail_Data .=  '<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">';
+  $mail_Data .=  '<div style="font-size:16px;text-align:center;font-family:\'Montserrat\', \'Trebuchet MS\', \'Lucida Grande\', \'Lucida Sans Unicode\', \'Lucida Sans\', Tahoma, sans-serif"><br/>';
+  $mail_Data .=  '<div class="our-class">';
+  $mail_Data .=  '<h2> <b><a href="https://jhaegman.com" style="text-decoration:none">Jhaegman.com</a></b> - Nouveau message </h2>';
+  $mail_Data .=  '</div>';
+  $mail_Data .=  '</div>';
+  $mail_Data .=  '<div style="color:#555555;font-family:\'Montserrat\', \'Trebuchet MS\', \'Lucida Grande\', \'Lucida Sans Unicode\', \'Lucida Sans\', Tahoma, sans-serif;line-height:120%;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">';
+  $mail_Data .=  '<div style="font-family: \'Montserrat\', \'Trebuchet MS\', \'Lucida Grande\', \'Lucida Sans Unicode\', \'Lucida Sans\', Tahoma, sans-serif; font-size: 12px; line-height: 14px; color: #555555;">';
+  $mail_Data .=  '<p style="font-size: 14px; line-height: 16px; text-align: center; margin: 0;">Reçu le <strong>'.$JOUR.'</strong> à <strong>'.$HEURE.'</strong></p>';
+  $mail_Data .=  '</div>';
+  $mail_Data .=  '</div>';
+  $mail_Data .=  '<table border="0" cellpadding="0" cellspacing="0" class="divider" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top" width="100%">';
+  $mail_Data .=  '<tbody>';
+  $mail_Data .=  '<tr style="vertical-align: top;" valign="top">';
+  $mail_Data .=  '<td class="divider_inner" style="word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" valign="top">';
+  $mail_Data .=  '<table align="center" border="0" cellpadding="0" cellspacing="0" class="divider_content" height="0" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; border-top: 1px solid #BBBBBB; height: 0px;" valign="top" width="100%">';
+  $mail_Data .=  '<tbody>';
+  $mail_Data .=  '<tr style="vertical-align: top;" valign="top">';
+  $mail_Data .=  '<td height="0" style="word-break: break-word; vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top"><span></span></td>';
+  $mail_Data .=  '</tr>';
+  $mail_Data .=  '</tbody>';
+  $mail_Data .=  '</table>';
+  $mail_Data .=  '</td>';
+  $mail_Data .=  '</tr>';
+  $mail_Data .=  '</tbody>';
+  $mail_Data .=  '</table>';
+  $mail_Data .=  '<div style="color:#555555;font-family:\'Montserrat\', \'Trebuchet MS\', \'Lucida Grande\', \'Lucida Sans Unicode\', \'Lucida Sans\', Tahoma, sans-serif;line-height:120%;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">';
+  $mail_Data .=  '<div style="font-family: \'Montserrat\', \'Trebuchet MS\', \'Lucida Grande\', \'Lucida Sans Unicode\', \'Lucida Sans\', Tahoma, sans-serif; line-height: 14px; font-size: 12px; color: #555555;">';
+  $mail_Data .=  '<p style="font-size: 14px; line-height: 16px; margin: 0;"><strong>De : </strong>'.$nom.'</p>';
+  // $mail_Data .=  '<p style="font-size: 14px; line-height: 16px; margin: 0;"> </p>';
+  // $mail_Data .=  '<p style="font-size: 14px; line-height: 24px; text-align: center; margin: 0;"><span style="font-size: 20px;"><strong>Titre de l\'email</strong></span></p>';
+  // $mail_Data .=  '<p style="font-size: 14px; line-height: 16px; text-align: center; margin: 0;"></p>';
+  $mail_Data .=  '<p style="font-size: 14px; line-height: 16px; margin: 0;"> <strong>Contenu : </strong> '.$message.'</p>';
+
+  $mail_Data .=  '<p style="line-height: 14px; text-align: left; font-size: 12px; margin: 0;"> </p>';
+  $mail_Data .=  '<p style="line-height: 14px; text-align: left; font-size: 12px; margin: 0;"> </p>';
+  $mail_Data .=  '<p style="line-height: 14px; text-align: left; font-size: 12px; margin: 0;"> </p>';
+  $mail_Data .=  '</div>';
+  $mail_Data .=  '</div>';
+  $mail_Data .=  '<table border="0" cellpadding="0" cellspacing="0" class="divider" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top" width="100%">';
+  $mail_Data .=  '<tbody>';
+  $mail_Data .=  '<tr style="vertical-align: top;" valign="top">';
+  $mail_Data .=  '<td class="divider_inner" style="word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" valign="top">';
+  $mail_Data .=  '<table align="center" border="0" cellpadding="0" cellspacing="0" class="divider_content" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; border-top: 1px solid #BBBBBB;" valign="top" width="100%">';
+  $mail_Data .=  '<tbody>';
+  $mail_Data .=  '<tr style="vertical-align: top;" valign="top">';
+  $mail_Data .=  '<td style="word-break: break-word; vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top"><span></span></td>';
+  $mail_Data .=  '</tr>';
+  $mail_Data .=  '</tbody>';
+  $mail_Data .=  '</table>';
+  $mail_Data .=  '</td>';
+  $mail_Data .=  '</tr>';
+  $mail_Data .=  '</tbody>';
+  $mail_Data .=  '</table>';
+  $mail_Data .=  '<div align="center" class="button-container" style="padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">';
+  $mail_Data .=  '<span style="font-size: 18px; line-height: 32px;"><a href="https://www.ovh.com/fr/mail" style="padding: 15px; border-radius: 35px; background-color: #2196F3; color: white;font-family:\'Montserrat\', \'Trebuchet MS\', \'Lucida Grande\', \'Lucida Sans Unicode\', \'Lucida Sans\', Tahoma, sans-serif">Répondre sur OVH webmail</a></span>';
+  $mail_Data .=  '</span></div>';
+  $mail_Data .=  '</div>';
+  $mail_Data .=  '<div style="color:#555555;font-family:\'Montserrat\', \'Trebuchet MS\', \'Lucida Grande\', \'Lucida Sans Unicode\', \'Lucida Sans\', Tahoma, sans-serif;line-height:120%;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">';
+  $mail_Data .=  '<div style="font-family: \'Montserrat\', \'Trebuchet MS\', \'Lucida Grande\', \'Lucida Sans Unicode\', \'Lucida Sans\', Tahoma, sans-serif; font-size: 12px; line-height: 14px; color: #555555;">';
+  $mail_Data .=  '<p style="font-size: 14px; line-height: 16px; text-align: center; margin: 0;"><a href="mailto:'.$coordonnees.'" style="text-decoration: underline; color: #0068A5;" title="'.$coordonnees.'">mailto:'.$coordonnees.'</a></p>';
+  $mail_Data .=  '</div>';
+  $mail_Data .=  '</div>';
+  $mail_Data .=  '</div>';
+  $mail_Data .=  '</div>';
+  $mail_Data .=  '</div>';
+  $mail_Data .=  '</div>';
+  $mail_Data .=  '</div>';
+  $mail_Data .=  '</div>';
+  $mail_Data .=  '</td>';
+  $mail_Data .=  '</tr>';
+  $mail_Data .=  '</tbody>';
+  $mail_Data .=  '</table>';
+  $mail_Data .=  '</body>';
+  $mail_Data .=  '</html>';
+  $mail_Data .=  '';
+
+
+  // Message de Priorité haute
+
+  // -------------------------
+
+  // $headers .= "X-Priority: 3  \n";
+  $CR_Mail = TRUE;
+
+
+  $CR_Mail = mail($to, $Subject, $mail_Data, $headers);
+?>
+Message envoyé!
+</body></html>

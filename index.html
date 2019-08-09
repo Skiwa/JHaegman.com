@@ -20,10 +20,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'UA-144537690-1');
   </script>
-
 </head>
 <body>
 	<main class="white" id="site-content">
@@ -43,7 +41,9 @@
 						<h1 class="big-stone-text headline">Développeur web freelance 🚀</h1>
 						<p class="big-stone-text presentation">Je réalise des sites webs complets tout en garantissant un code et une expérience utilisateur de qualité.</p>
 						<div class="call-to-action">
-							<a class="btn waves-effect waves-light blue round-button call-to-action--button" href="#contact">Travailler avec moi !</a> <a class="waves-effect waves-light btn shamrock-text transparent z-depth-0 available"><i class="material-icons left shamrock-text">check_circle_outline</i>Disponible</a>
+							<a class="btn waves-effect waves-light blue round-button call-to-action--button" href="#contact">Travailler avec moi !</a>
+							<!-- <a class="waves-effect waves-light btn shamrock-text transparent z-depth-0 available"><i class="material-icons left shamrock-text">check_circle_outline</i>Disponible</a> -->
+							<!-- <a class="waves-effect waves-light btn red-text transparent z-depth-0 available"><i class="material-icons left red-text">block</i>Indisponible jusqu'au 20 septembre</a> -->
 						</div>
 					</div>
 				</div>
@@ -142,7 +142,7 @@
 			</div>
 			<br>
 			<div class="row section-portfolio--content">
-				<div class="cols12">
+				<div class="col s12">
 					<div class="carousel carousel-slider center">
 						<div class="carousel-item blue white-text">
 							<div class="container">
@@ -239,12 +239,12 @@
 						</div>
 						<br>
 						<br>
-						<br>
+						<div class="col s12 right-align">
+							<a href="" class="white-text">A propos de ce site</a>
+						</div><br>
 					</div>
 				</div>
 			</div>
-			<br>
-			<br>
 			<br>
 			<br>
 		</section><br>
@@ -418,7 +418,7 @@
 				<span class="dodger-blue-text">Comment puis-je vous aider ?</span>
 			</div>
 			<div class="container-extra-tight">
-				<form action="../toast.php" method="post">
+				<form action="/form.php" method="post" id="contactForm">
 					<div class="row">
 						<div class="input-field col s12">
 							<input class="validate white-text" id="name" name="nom" required="" type="text"> <label for="name">Nom</label>
@@ -468,16 +468,57 @@
 			<div class="col s12 center-align">
 				<span class="siret white-text">SIRET n°84068032600013</span>
 			</div><br>
+			<div class="col s12 center-align">
+				<a href="#aboutModal" class="about white-text modal-trigger">A propos de ce site</a>
+			</div>
 			<br>
 		</div>
 	</footer>
+	<!-- About modal -->
+	<div id="aboutModal" class="modal modal-fixed-footer">
+		<div class="modal-header dodger-blue white-text">
+			<h3>A propos de ce site</h3>
+		</div>
+		<div class="modal-content">
+			<div class="row aboutModal--content">
+				<div class="col l8 m12 s12 aboutModal--content__about">
+					<h4>Conception</h4>
+					<p>Site basé sur une <a target="_blank" href="/files/jhaegman_maquette.pdf" title="Maquette du site (.pdf)">maquette</a> réalisée avec Adobe XD.</p>
+					<p>Entièrement responsif et adapté aux navigateurs mobiles.</p>
+					<p>Conçu avec <a href="https://materializecss.com/" title="Materialize CSS" target="_blank">Materialize CSS</a> et <a href="https://sass-lang.com/" title="SASS" target="_blank">SASS</a>.</p>
+					<a class="btn waves-effect waves-light grey darken-3" href="https://github.com/Skiwa/jhaegman.com" rel="noopener" target="_blank" title="Dépôt GitHub">Code source<i class="material-icons right">launch</i></a>
+				</div>
+				<div class="col s12 hide-on-large-only">
+					<br>
+					<div class="divider"></div>
+				</div>
+				<div class="col l4 m12 s12 aboutModal--content__tools">
+					<ul>
+						<h4>Design</h4>
+						<li><a href="">Adobe XD</a></li>
+						<li><a href="">Colorhunt</a></li>
+						<br>
+						<h4>Développement</h4>
+						<li><a href="https://atom.io" title="Atom" target="_blank">Atom</a></li>
+						<li><a href="https://atom.io/packages/atom-live-server" title="atom-live-server" target="_blank">atom-live-server</a></li>
+						<li><a href="https://atom.io/packages/sass-autocompile" title="sass-autocompile" target="_blank">sass-autocompile</a></li>
+						<li><a href="https://www.npmjs.com/package/create-materialize-sass-project" title="create-materialize-sass-project" target="_blank">create-materialize-sass-project</a></li>
+						<br>
+						<h4>Tests</h4>
+						<li><a href="https://chrome.google.com/webstore/detail/emmet-review/epejoicbhllgiimigokgjdoijnpaphdp?hl=en" title="Emmet Re:view" target="_blank">Emmet Re:view</a></li>
+						<li><a href="https://frontendchecklist.io/" title="Front end checklist" target="_blank">The Front-End Checklist</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-close waves-effect waves-blue btn-flat">Retour</a>
+		</div>
+	</div>
 	<script async defer src="https://www.google.com/recaptcha/api.js">
 	</script>
-	<script src="https://unpkg.com/scrollreveal">
-	</script>
-	<script src="js/materialize.min.js">
-	</script>
-	<script src="js/main.js">
-	</script>
+	<script src="js/scrollreveal.js"></script>
+	<script src="js/materialize.min.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>

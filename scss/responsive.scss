@@ -67,6 +67,8 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
        margin-bottom: .75rem;
      }
    }
+
+
  }
  @media #{$medium-and-up} {
    // styles for medium screens and larger
@@ -86,6 +88,10 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
      .carousel-item{
        text-align: center;
      }
+   }
+
+   #aboutModal{
+     text-align:center;
    }
    // styles for medium screens and down
  }
